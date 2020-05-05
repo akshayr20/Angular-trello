@@ -1,0 +1,26 @@
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: rgba($color: #fff, $alpha: 0.5);
+
+  > {
+    img {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+  }
+
+  &__success {
+    border: 1px solid blue;
+    background-color: blue;
+  }
+
+  &__danger {
+    border: 1px solid red;
+    background-color: red;
+  }
+}

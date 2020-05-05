@@ -1,0 +1,32 @@
+<div
+  class="add-card"
+  (click)="isFormOpen = true"
+  *ngIf="!isFormOpen; else addNewCard"
+>
+  <h4>
+    <ng-content></ng-content>
+  </h4>
+  <div class="icon-container sm-margin-left">
+    <img src="../assets/svg/plus.svg" alt="Add Card" />
+  </div>
+</div>
+
+<ng-template #addNewCard>
+  <div class="new-task-form">
+    <input
+      autofocus
+      (keydown.enter)="emitTask()"
+      #newCardRef
+      type="text"
+      class="form-control"
+    />
+    <div class="action-buttons">
+      <div (click)="emitTask()" class="icon-container icon-container__success">
+        <img src="../../../assets/svg/check-mark.svg" alt="Confirm" />
+      </div>
+      <div (click)="closeForm()" class="icon-container icon-container__danger">
+        <img src="../../../assets/svg/close.svg" alt="Cancel" />
+      </div>
+    </div>
+  </div>
+</ng-template>

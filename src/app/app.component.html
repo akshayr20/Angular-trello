@@ -6,20 +6,21 @@
 <main class="board" cdkDropListGroup>
   <div class="board--columns" *ngFor="let column of board.columns">
     <div
-      class="board--columns__column column"
+      class="board--columns__column"
       cdkDropList
       [cdkDropListData]="column.tasks"
       (cdkDropListDropped)="drop($event)"
     >
       <h3 class="column--title">{{ column.name }}</h3>
-      <div class="column--add-task"></div>
-      <div
-        class="column--content drag"
-        *ngFor="let task of column.tasks"
-        cdkDrag
-      >
-        <span>{{ task }}</span>
+      <div class="column--content" *ngFor="let task of column.tasks" cdkDrag>
+        {{ task }}
       </div>
+      <app-add-new-feature (create)="createTask($event, column)">
+        Add new Card
+      </app-add-new-feature>
     </div>
   </div>
+  <app-add-new-feature (create)="createColumn($event)">
+    Add New Column
+  </app-add-new-feature>
 </main>

@@ -1,6 +1,13 @@
-@import './base';
-@import './variables/variable';
-@import './reset.scss';
+@import "./base";
+@import "./reset.scss";
 
-@import './drag-drop.scss';
-@import './layout/board.scss';
+@import "./variables/variable";
+
+@import "./utilities/utilities.scss";
+@import "./utilities/drag-drop.scss";
+
+@import "./components/icons.scss";
+@import './components/scrollbar.scss';
+
+
+@import "./layout/board.scss";

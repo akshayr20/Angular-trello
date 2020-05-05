@@ -11,22 +11,21 @@
   }
 
   &--title {
-    background-color: rgb(29, 29, 29, 0.8);
-    color: green;
     font-size: 2rem;
+    color: green;
     font-weight: bold;
+    background-color: rgb(29, 29, 29, 0.8);
   }
 
   &--sub-title {
-    background-color: rgb(grey, 0.5);
-    color: #fff;
     font-size: 1.6rem;
+    color: #fff;
+    background-color: rgb(grey, 0.5);
   }
 }
 
 .column {
   &--title {
-    cursor: pointer;
     padding: 0 4px;
     margin-bottom: 0.8rem;
     font-weight: 600;
@@ -38,21 +37,22 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    font-size: 1.4rem;
+
+    padding: 1rem 1.2rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    box-shadow: var(--shadow-default);
+    word-wrap: break-word;
+
     overflow-y: auto;
     overflow-x: hidden;
     cursor: move;
-    span {
-      font-size: 1.4rem;
-      font-family: "Lato", sans-serif;
-      color: #172b4d;
-      font-weight: 400;
-      max-width: 100%;
-      padding: 1rem 1.2rem;
-      background-color: rgba(#fff, 0.8);
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
-      box-shadow: var(--shadow-default);
-      word-wrap: break-word;
-    }
+    background-color: rgba(#fff, 0.7);
   }
+}
+
+.create-column {
+  justify-content: center;
 }
