@@ -1,11 +1,20 @@
 <header><h1 class="header">Trello</h1></header>
 <h2 class="sub-header">{{ board.name }}</h2>
 
-<main class="board">
+<main class="board" cdkDropListGroup>
   <div class="board--columns" *ngFor="let column of board.columns">
-    <div class="board--columns__column">
+    <div
+      class="board--columns__column"
+      cdkDropList
+      [cdkDropListData]="column.tasks"
+      (cdkDropListDropped)="drop($event)"
+    >
       <h3 class="card-title">{{ column.name }}</h3>
-      <div class="board--columns__content" *ngFor="let task of column.tasks">
+      <div
+        class="board--columns__content drag"
+        *ngFor="let task of column.tasks"
+        cdkDrag
+      >
         <span>{{ task }}</span>
       </div>
     </div>

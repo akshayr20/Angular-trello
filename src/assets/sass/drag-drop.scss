@@ -1,0 +1,17 @@
+.cdk-drag-preview {
+  -webkit-box-shadow: -5px 6px 10px -3px rgba(117, 117, 117, 0.8);
+  -moz-box-shadow: -5px 6px 10px -3px rgba(117, 117, 117, 0.8);
+  box-shadow: -5px 6px 10px -3px rgba(117, 117, 117, 0.8);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
