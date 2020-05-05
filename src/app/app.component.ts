@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
+import { Board, Column } from './models/board.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'angular-trello';
+
+  board = new Board('New Project Name', [
+    new Column('Backlog', [
+      'Create Trello using Angular',
+      'Create Trello using React',
+    ]),
+    new Column('In Progress', [
+      'Create Trello using Angular  Test',
+      'Create Trello using React  Test',
+    ]),
+    new Column('Done', ['Create Trello using Angular Test'])
+  ]);
 }

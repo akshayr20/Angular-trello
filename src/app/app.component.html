@@ -1,36 +1,13 @@
 <header><h1 class="header">Trello</h1></header>
-
-<h2 class="sub-header">Project Title</h2>
+<h2 class="sub-header">{{ board.name }}</h2>
 
 <main class="board">
-  <div class="board--columns">
+  <div class="board--columns" *ngFor="let column of board.columns">
     <div class="board--columns__column">
-      <header class="card-title">
-        <h2>Board Name</h2>
-      </header>
-      <div class="board--columns__content">
-        <span>Cooking</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-        <span>Coding</span>
-
+      <h3 class="card-title">{{ column.name }}</h3>
+      <div class="board--columns__content" *ngFor="let task of column.tasks">
+        <span>{{ task }}</span>
       </div>
-    </div>
-  </div>
-
-  <div class="board--columns">
-    <div class="board--columns__column">
-      Todo2
     </div>
   </div>
 </main>
