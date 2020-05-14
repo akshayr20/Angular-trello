@@ -1,7 +1,5 @@
-@import "./base";
-@import "./reset.scss";
-
-@import "./variables/variable";
+@import "./base/base";
+@import "./base/reset.scss";
 
 @import "./utilities/utilities.scss";
 @import "./utilities/drag-drop.scss";

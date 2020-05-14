@@ -5,7 +5,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { BackendService } from './service/backend.service';
-import { Board, Column } from './models/board.model';
+import { Board, Column, Task } from './models/board.model';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +33,12 @@ export class AppComponent {
         event.currentIndex
       );
     }
+    this.backEndService.saveBoard();
   }
 
-  createTask(task: string, column: Column) {
-    if (task && column) {
-      this.backEndService.createCard(task, column);
+  createTask(taskDesc: string, column: Column) {
+    if (taskDesc && column) {
+      this.backEndService.createCard(taskDesc, column);
     }
   }
 

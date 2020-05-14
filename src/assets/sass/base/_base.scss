@@ -1,27 +1,10 @@
-@import "./variables/variable";
-
 :root {
   --shadow-default: 0 1px 0 rgba(9, 30, 66, 0.25);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
-
-  @media only screen and (max-width: $bp-medium) {
-    font-size: 50%;
-  }
 }
 
 body {
@@ -30,7 +13,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: #172b4d;
-  background-image: url("assets/images/background-image.png");
+  background-image: url("assets/images/bg-trello.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

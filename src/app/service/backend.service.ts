@@ -1,34 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Column, Board } from '../models/board.model';
+import { Column, Board, Task } from '../models/board.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
-  board = new Board('New Project Name', [
-    new Column('Backlog', [
-      'Create Trello using Angular',
-      'Create Trello using React',
-    ]),
-    new Column('In Progress', [
-      'Create Trello using Angular  Test',
-      'Create Trello using React  Test',
-    ]),
-    new Column('Done', ['Create Trello using Angular Test']),
-  ]);
+  // DummyData
+  task = new Task(Date.now(), 'Create Trello using Angular');
+  column = new Column(Date.now(), 'Done', [this.task]);
+  board = new Board(Date.now(), 'New Project', [this.column]);
 
   constructor() {}
 
-  createCard(newTask: string, column: Column) {
-    if (newTask) {
-      column.tasks.push(newTask);
+  fetchBoard() {
+    // Fetch Data from some backend;
+    console.log(this.board);
+  }
+
+  saveBoard() {
+    // save Data to some backend;
+    console.log(this.board);
+  }
+
+  createCard(taskDesc: string, column: Column) {
+    if (taskDesc) {
+      column.tasks.push(new Task(Date.now(), taskDesc));
+      this.saveBoard();
     }
   }
 
   createColumn(columnName: string) {
     if (columnName) {
-      const newColumn = new Column(columnName, []);
-      this.board.columns.push(newColumn);
+      this.board.columns.push(new Column(Date.now(), columnName, []));
+      this.saveBoard();
     }
   }
 }

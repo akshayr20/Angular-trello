@@ -1,6 +1,5 @@
 <header class="header">
-  <h1 class="header--title">Trello</h1>
-  <h2 class="header--sub-title">{{ board.name }}</h2>
+  {{ board.name }}
 </header>
 
 <main class="board" cdkDropListGroup>
@@ -13,7 +12,7 @@
     >
       <h3 class="column--title">{{ column.name }}</h3>
       <div class="column--content" *ngFor="let task of column.tasks" cdkDrag>
-        {{ task }}
+        {{ task.desc }}
       </div>
       <app-add-new-feature (create)="createTask($event, column)">
         Add new Card

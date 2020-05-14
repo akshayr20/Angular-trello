@@ -1,7 +1,19 @@
+export class Task {
+  constructor(public id: number, public desc: string) {}
+}
+
 export class Column {
-  constructor(public name: string, public tasks: Array<string>) {}
+  constructor(
+    public id: number,
+    public name: string,
+    public tasks: Array<Task>
+  ) {}
 }
 
 export class Board {
-  constructor(public name: string, public columns: Column[]) {}
+  constructor(
+    public id: number,
+    public name: string,
+    public columns: Column[]
+  ) {}
 }
