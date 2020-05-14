@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { BackendService } from './service/backend.service';
-import { Board, Column, Task } from './models/board.model';
+import { Board, Column } from './models/board.model';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +8,10 @@ import { Board, Column, Task } from './models/board.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  withCdk = false;
   board: Board;
   constructor(private backEndService: BackendService) {
     this.board = this.backEndService.board;
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-    this.backEndService.saveBoard();
   }
 
   createTask(taskDesc: string, column: Column) {

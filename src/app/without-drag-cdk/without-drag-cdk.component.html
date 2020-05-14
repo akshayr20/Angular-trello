@@ -1,0 +1,29 @@
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+</style>
+
+<div
+  class="board--columns__column"
+  (drop)="moveToAnotherColumn($event, column.id)"
+  (dragover)="dragover($event)"
+  (dragend)="dragEnd()"
+>
+  <h3 class="column--title">{{ column.name }}</h3>
+  <div
+    class="column--content"
+    draggable="true"
+    [ngClass]="{ 'dragging': isDragging }"
+    *ngFor="let task of column.tasks; let i = index"
+    (dragenter)="moveInsideColumn($event, task.id, column.id)"
+    (dragstart)="dragStart($event, task.id, column.id)"
+  >
+    {{ task.desc }}
+  </div>
+  <app-add-new-feature (create)="createTask($event, column)">
+    Add new Card
+  </app-add-new-feature>
+</div>

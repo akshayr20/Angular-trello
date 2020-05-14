@@ -6,9 +6,14 @@ import { Column, Board, Task } from '../models/board.model';
 })
 export class BackendService {
   // DummyData
-  task = new Task(Date.now(), 'Create Trello using Angular');
-  column = new Column(Date.now(), 'Done', [this.task]);
-  board = new Board(Date.now(), 'New Project', [this.column]);
+
+  task1 = new Task(Date.now() + 10, 'Create Trello using Angular');
+  task2 = new Task(Date.now() + 12, 'Test Trello');
+
+  column1 = new Column(Date.now() + 14, 'Todo', [this.task1]);
+  column2 = new Column(Date.now() + 16, 'Done', [this.task2]);
+
+  board = new Board(Date.now(), 'New Project', [this.column1, this.column2]);
 
   constructor() {}
 
@@ -19,7 +24,9 @@ export class BackendService {
 
   saveBoard() {
     // save Data to some backend;
-    console.log(this.board);
+    setTimeout(() => {
+      console.log(this.board);
+    }, 100);
   }
 
   createCard(taskDesc: string, column: Column) {
@@ -35,4 +42,9 @@ export class BackendService {
       this.saveBoard();
     }
   }
+
+  getColumnById(columnID): Column {
+    return this.board.columns.find(({ id }) => id === columnID);
+  }
+
 }

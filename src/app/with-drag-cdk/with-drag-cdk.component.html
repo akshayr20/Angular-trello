@@ -1,0 +1,22 @@
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+</style>
+
+<div
+  class="board--columns__column"
+  cdkDropList
+  [cdkDropListData]="column.tasks"
+  (cdkDropListDropped)="drop($event)"
+>
+  <h3 class="column--title">{{ column.name }}</h3>
+  <div class="column--content" *ngFor="let task of column.tasks" cdkDrag>
+    {{ task.desc }}
+  </div>
+  <app-add-new-feature (create)="createTask($event, column)">
+    Add new Card
+  </app-add-new-feature>
+</div>
