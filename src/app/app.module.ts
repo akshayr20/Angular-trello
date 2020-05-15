@@ -4,14 +4,17 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { AddNewFeatureComponent } from './components/add-new-feature/add-new-feature.component';
-import { BackendService } from './service/backend.service';
 import { WithDragCdkComponent } from './with-drag-cdk/with-drag-cdk.component';
 import { WithoutDragCdkComponent } from './without-drag-cdk/without-drag-cdk.component';
 
 @NgModule({
-  declarations: [AppComponent, AddNewFeatureComponent, WithDragCdkComponent, WithoutDragCdkComponent],
+  declarations: [
+    AppComponent,
+    AddNewFeatureComponent,
+    WithDragCdkComponent,
+    WithoutDragCdkComponent,
+  ],
   imports: [BrowserModule, DragDropModule],
-  providers: [BackendService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BackendService } from './service/backend.service';
+import { DataService } from './service/data.service';
 import { Board, Column } from './models/board.model';
 
 @Component({
@@ -10,19 +10,19 @@ import { Board, Column } from './models/board.model';
 export class AppComponent {
   withCdk = false;
   board: Board;
-  constructor(private backEndService: BackendService) {
-    this.board = this.backEndService.board;
+  constructor(private dataService: DataService) {
+    this.board = this.dataService.board;
   }
 
   createTask(taskDesc: string, column: Column) {
     if (taskDesc && column) {
-      this.backEndService.createCard(taskDesc, column);
+      this.dataService.createCard(taskDesc, column);
     }
   }
 
   createColumn(columnName: string) {
     if (columnName) {
-      this.backEndService.createColumn(columnName);
+      this.dataService.createColumn(columnName);
     }
   }
 }

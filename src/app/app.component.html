@@ -3,7 +3,11 @@
 </header>
 
 <main class="board" cdkDropListGroup>
-  <div class="board--columns" *ngFor="let column of board.columns" [id]="column.id">
+  <div
+    class="board--columns"
+    *ngFor="let column of board.columns"
+    [id]="column.id"
+  >
     <app-with-drag-cdk
       [column]="column"
       *ngIf="withCdk; else withoutCdk"
@@ -12,7 +16,6 @@
     <ng-template #withoutCdk>
       <app-without-drag-cdk [column]="column"></app-without-drag-cdk>
     </ng-template>
-
   </div>
   <app-add-new-feature (create)="createColumn($event)">
     Add New Column

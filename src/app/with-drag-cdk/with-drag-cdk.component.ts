@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Column } from '../models/board.model';
-import { BackendService } from '../service/backend.service';
+import { DataService } from '../service/data.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -10,7 +10,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class WithDragCdkComponent {
   @Input() column: Column;
 
-  constructor(private backEndService: BackendService) {}
+  constructor(private dataService: DataService) {}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -27,12 +27,12 @@ export class WithDragCdkComponent {
         event.currentIndex
       );
     }
-    this.backEndService.saveBoard();
+    this.dataService.saveBoard();
   }
 
   createTask(taskDesc: string, column: Column) {
     if (taskDesc && column) {
-      this.backEndService.createCard(taskDesc, column);
+      this.dataService.createCard(taskDesc, column);
     }
   }
 }

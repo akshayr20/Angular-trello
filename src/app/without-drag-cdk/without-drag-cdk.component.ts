@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Column } from '../models/board.model';
-import { BackendService } from '../service/backend.service';
-import { DragDropService } from '../service/drag-drop.service';
+import { DataService } from '../service/data.service';
+import { DragDropService } from './helpers/drag-drop.service';
 
 @Component({
   selector: 'app-without-drag-cdk',
@@ -13,7 +13,7 @@ export class WithoutDragCdkComponent implements OnInit {
 
   constructor(
     private dragDropService: DragDropService,
-    private dataService: BackendService
+    private dataService: DataService
   ) {}
 
   ngOnInit() {

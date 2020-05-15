@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Column } from '../models/board.model';
-import { BackendService } from './backend.service';
+import { Column } from '../../models/board.model';
+import { DataService } from '../../service/data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class DragDropService {
   draggedColumnId = null;
   draggedTaskId = null;
 
-  constructor(private dataService: BackendService) {}
+  constructor(private dataService: DataService) {}
 
   dragStart(draggedTaskId: number, draggedColumnId: number) {
     this.draggedTaskId = draggedTaskId;
