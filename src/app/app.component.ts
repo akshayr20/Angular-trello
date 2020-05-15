@@ -11,7 +11,7 @@ export class AppComponent {
   withCdk = false;
   board: Board;
   constructor(private dataService: DataService) {
-    this.board = this.dataService.board;
+    this.board = this.dataService.fetchBoard();
   }
 
   createTask(taskDesc: string, column: Column) {

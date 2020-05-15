@@ -7,24 +7,34 @@ import { Column, Board, Task } from '../models/board.model';
 export class DataService {
   // DummyData
 
-  task = new Task(Date.now(), 'Create Trello using Angular');
+  private task = new Task(Date.now(), 'Create Trello using Angular');
 
-  column = new Column(Date.now() + 14, 'Todo', [this.task]);
+  private column1 = new Column(Date.now() + 10, 'Todo', [this.task]);
+  private column2 = new Column(Date.now() + 20, 'Todo', []);
+  private column3 = new Column(Date.now() + 30, 'Todo', []);
 
-  board = new Board(Date.now(), 'New Project', [this.column]);
+  private board = new Board(Date.now(), 'New Project', [
+    this.column1,
+    this.column2,
+    this.column3,
+  ]);
 
   constructor() {}
 
   fetchBoard() {
-    // Fetch Data from some backend;
-    console.log(this.board);
+    const board = localStorage.getItem('board');
+    if (board) {
+      // TODO: USE index DB instead of local storage
+      // Fetch ITEM based on selected projectID.
+      this.board = JSON.parse(board);
+    }
+    return this.board;
   }
 
   saveBoard() {
-    // save Data to some backend;
-    setTimeout(() => {
-      console.log(this.board);
-    }, 100);
+    // TODO:  CREATE MULTIPLE BOARDS, save ITEM BY BOARD ID in indexDB
+    const board = JSON.stringify(this.board);
+    localStorage.setItem('board', board);
   }
 
   createCard(taskDesc: string, column: Column) {
