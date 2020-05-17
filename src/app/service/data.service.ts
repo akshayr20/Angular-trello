@@ -64,6 +64,7 @@ export class DataService {
       ({ id }) => id === columnId
     );
     this.board.columns.splice(columnIndex, 1);
+    this.saveBoard();
   }
 
   getColumnById(columnID): Column {
