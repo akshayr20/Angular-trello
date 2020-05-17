@@ -1,6 +1,6 @@
-@import '../typography/typography';
-@import './flex';
-@import '../utilities/utilities.scss';
+@import "../typography/typography";
+@import "./flex";
+@import "../utilities/utilities.scss";
 
 .board {
   display: flex;
@@ -37,6 +37,23 @@
       span {
         font-size: inherit;
       }
+    }
+
+    &__task {
+      @extend .flex-justify-content-between-align-items-center;
+      background-color: rgba(#fff, 0.7);
+      box-shadow: var(--shadow-default);
+
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-family: "Lato", sans-serif;
+      padding: 1rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+      word-wrap: break-word;
+      cursor: move;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 }

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddNewFeatureComponent } from './add-new-feature/add-new-feature.component';
+import { AddFeatureComponent } from './add-feature/add-feature.component';
 import { HeaderComponent } from './header/header.component';
-import { TaskComponent } from './task/task.component';
+import { HighlightOrRemoveFeatureComponent } from './highlight-or-remove-feature/highlight-or-remove-feature.component';
 
-const Components = [AddNewFeatureComponent, HeaderComponent, TaskComponent];
+const Components = [
+  AddFeatureComponent,
+  HeaderComponent,
+  HighlightOrRemoveFeatureComponent,
+];
 
 @NgModule({
   declarations: Components,

@@ -12,22 +12,14 @@
   (dragover)="dragover($event)"
   (dragend)="dragEnd()"
 >
-  <!-- TODO: CREATE A NEW COMPONENT FOR TITLE -->
-  <h2
-    class="board--columns__title"
-    (mouseover)="showDeleteIcon = true"
-    (mouseleave)="showDeleteIcon = false"
+  <app-highlight-or-remove-feature
+    className="board--columns__title"
+    (removeFeature)="removeColumn.emit(column.id)"
   >
-    <span>{{ column.name }}</span>
-    <span
-      *ngIf="showDeleteIcon"
-      class="delete-icon"
-      (click)="removeColumn.emit(true)"
-    >
-      <img src="../../assets/svg/remove.svg" />
-    </span>
-  </h2>
-  <!-- TODO: CREATE directives for drag actions -->
+    {{ column.name }}
+  </app-highlight-or-remove-feature>
+
+  <!-- TODO: CREATE directives for Drag actions -->
   <div
     draggable="true"
     [ngClass]="{ dragging: isDragging }"
@@ -35,11 +27,14 @@
     (dragstart)="dragStart($event, task.id, column.id)"
     *ngFor="let task of column.tasks; trackBy: trackByFn"
   >
-    <app-task (removeTask)="removeTask(task.id, column.id)">
+    <app-highlight-or-remove-feature
+      className="board--columns__task"
+      (removeFeature)="removeTask(task.id, column.id)"
+    >
       {{ task.desc }}
-    </app-task>
+    </app-highlight-or-remove-feature>
   </div>
-  <app-add-new-feature (create)="createTask($event, column)">
+  <app-add-feature (create)="createTask($event, column)">
     Add new Card
-  </app-add-new-feature>
+  </app-add-feature>
 </div>

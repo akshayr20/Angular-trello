@@ -1,17 +1,27 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy  } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { Column } from 'src/app/models';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-column-with-cdk',
   templateUrl: './column.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColumnWithCdkComponent {
   @Input() column: Column;
-  @Output() removeColumn = new EventEmitter<boolean>(null);
-  showDeleteIcon  = false;
+  @Output() removeColumn = new EventEmitter<number>(null);
+  showDeleteIcon = false;
 
   constructor(private dataService: DataService) {}
 

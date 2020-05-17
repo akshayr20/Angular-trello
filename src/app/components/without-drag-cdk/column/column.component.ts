@@ -10,7 +10,7 @@ import { DragDropService } from '../service/drag-drop/drag-drop.service';
 })
 export class ColumnWithoutCdkComponent implements OnInit {
   @Input() column: Column;
-  @Output() removeColumn = new EventEmitter<boolean>(null);
+  @Output() removeColumn = new EventEmitter<number>(null);
   showDeleteIcon  = false;
   isDragging: boolean;
 

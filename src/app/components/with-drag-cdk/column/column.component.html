@@ -12,27 +12,22 @@
   [cdkDropListData]="column.tasks"
   (cdkDropListDropped)="drop($event)"
 >
-  <!-- TODO: CREATE A NEW COMPONENT FOR TITLE -->
-  <h2
-    class="board--columns__title"
-    (mouseover)="showDeleteIcon = true"
-    (mouseleave)="showDeleteIcon = false"
+  <app-highlight-or-remove-feature
+    className="board--columns__title"
+    (removeFeature)="removeColumn.emit(column.id)"
   >
-    <span>{{ column.name }}</span>
-    <span
-      *ngIf="showDeleteIcon"
-      class="delete-icon"
-      (click)="removeColumn.emit(true)"
-    >
-      <img src="../../assets/svg/remove.svg" />
-    </span>
-  </h2>
+    {{ column.name }}
+  </app-highlight-or-remove-feature>
+
   <div *ngFor="let task of column.tasks; trackBy: trackByFn" cdkDrag>
-    <app-task (removeTask)="removeTask(task.id, column.id)">
+    <app-highlight-or-remove-feature
+      className="board--columns__task"
+      (removeFeature)="removeTask(task.id, column.id)"
+    >
       {{ task.desc }}
-    </app-task>
+    </app-highlight-or-remove-feature>
   </div>
-  <app-add-new-feature (create)="createTask($event, column)">
+  <app-add-feature (create)="createTask($event, column)">
     Add new Card
-  </app-add-new-feature>
+  </app-add-feature>
 </div>
