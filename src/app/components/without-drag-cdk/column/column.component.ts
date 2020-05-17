@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
 import { Column } from 'src/app/models';
 import { DragDropService } from '../service/drag-drop/drag-drop.service';
 
 @Component({
   selector: 'app-column-without-cdk',
-  templateUrl: './column.component.html'
+  templateUrl: './column.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColumnWithoutCdkComponent implements OnInit {
   @Input() column: Column;
+  @Output() removeColumn = new EventEmitter<boolean>(null);
+  showDeleteIcon  = false;
   isDragging: boolean;
 
   constructor(

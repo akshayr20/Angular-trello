@@ -4,12 +4,14 @@ import {
   ViewChild,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
   selector: 'app-add-new-feature',
   templateUrl: './add-new-feature.component.html',
   styleUrls: ['./add-new-feature.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddNewFeatureComponent {
   // TODO: Can import Template/Reactive form Module in case more functionality is required.

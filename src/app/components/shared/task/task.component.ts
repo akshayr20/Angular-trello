@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -21,6 +21,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
     </div>
   `,
   styleUrls: ['./task.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskComponent {
   @Output() removeTask = new EventEmitter<boolean>(null);

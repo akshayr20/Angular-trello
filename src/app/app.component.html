@@ -6,8 +6,8 @@
   }
 </style>
 
-<app-without-drag-cdk  *ngIf="hasCdk; else withoutCdk"></app-without-drag-cdk>
+<app-with-drag-cdk  *ngIf="hasCdk; else withoutCdk"></app-with-drag-cdk>
 
 <ng-template #withoutCdk>
-  <app-with-drag-cdk></app-with-drag-cdk>
+  <app-without-drag-cdk></app-without-drag-cdk>
 </ng-template>

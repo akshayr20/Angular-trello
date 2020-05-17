@@ -1,3 +1,7 @@
+@import '../typography/typography';
+@import './flex';
+@import '../utilities/utilities.scss';
+
 .board {
   display: flex;
   justify-content: flex-start;
@@ -22,6 +26,17 @@
       width: 30rem;
       overflow-y: auto;
       overflow-x: hidden;
+    }
+
+    &__title {
+      @extend .heading;
+      @extend .heading__secondary;
+      @extend .flex-justify-content-between-align-items-center;
+      @extend .sm-margin-bottom;
+
+      span {
+        font-size: inherit;
+      }
     }
   }
 }

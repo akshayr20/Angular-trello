@@ -13,7 +13,7 @@
     class="board--columns"
     *ngFor="let column of board.columns; trackBy: trackByFn"
   >
-    <app-column-without-cdk [column]="column"></app-column-without-cdk>
+    <app-column-without-cdk [column]="column"  (removeColumn)="removeColumn(column.id)"></app-column-without-cdk>
   </div>
   <app-add-new-feature (create)="createColumn($event)">
     Add New Column

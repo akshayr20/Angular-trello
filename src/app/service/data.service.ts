@@ -10,8 +10,8 @@ export class DataService {
   private task = new Task(Date.now(), 'Create Trello using Angular');
 
   private column1 = new Column(Date.now() + 10, 'Todo', [this.task]);
-  private column2 = new Column(Date.now() + 20, 'Todo', []);
-  private column3 = new Column(Date.now() + 30, 'Todo', []);
+  private column2 = new Column(Date.now() + 20, 'In Progress', []);
+  private column3 = new Column(Date.now() + 30, 'In Review', []);
 
   private board = new Board(Date.now(), 'New Project', [
     this.column1,
@@ -32,7 +32,8 @@ export class DataService {
   }
 
   saveBoard() {
-    // TODO:  CREATE MULTIPLE BOARDS, save ITEM BY BOARD ID in indexDB
+    // TODO: CREATE MULTIPLE BOARDS, save ITEM BY BOARD ID in indexDB,
+    // TODO: IF offline store to local storage else store to firebase.
     const board = JSON.stringify(this.board);
     localStorage.setItem('board', board);
   }
@@ -58,6 +59,13 @@ export class DataService {
     }
   }
 
+  removeColumn(columnId: number) {
+    const columnIndex = this.board.columns.findIndex(
+      ({ id }) => id === columnId
+    );
+    this.board.columns.splice(columnIndex, 1);
+  }
+
   getColumnById(columnID): Column {
     return this.board.columns.find(({ id }) => id === columnID);
   }
@@ -65,6 +73,4 @@ export class DataService {
   getTaskIndexByColumnAndTaskId(column: Column, taskId): number {
     return column.tasks.findIndex(({ id }) => id === taskId);
   }
-
-
 }

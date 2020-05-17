@@ -9,10 +9,14 @@
 <app-header>{{ board.name }}</app-header>
 
 <main class="board" cdkDropListGroup>
-  <div class="board--columns"
+  <div
+    class="board--columns"
     *ngFor="let column of board.columns; trackBy: trackByFn"
   >
-    <app-column-with-cdk [column]="column"></app-column-with-cdk>
+    <app-column-with-cdk
+      [column]="column"
+      (removeColumn)="removeColumn(column.id)"
+    ></app-column-with-cdk>
   </div>
   <app-add-new-feature (create)="createColumn($event)">
     Add New Column

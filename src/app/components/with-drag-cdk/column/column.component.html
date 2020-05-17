@@ -12,7 +12,21 @@
   [cdkDropListData]="column.tasks"
   (cdkDropListDropped)="drop($event)"
 >
-  <h2 class="heading heading__secondary sm-margin-bottom">{{ column.name }}</h2>
+  <!-- TODO: CREATE A NEW COMPONENT FOR TITLE -->
+  <h2
+    class="board--columns__title"
+    (mouseover)="showDeleteIcon = true"
+    (mouseleave)="showDeleteIcon = false"
+  >
+    <span>{{ column.name }}</span>
+    <span
+      *ngIf="showDeleteIcon"
+      class="delete-icon"
+      (click)="removeColumn.emit(true)"
+    >
+      <img src="../../assets/svg/remove.svg" />
+    </span>
+  </h2>
   <div *ngFor="let task of column.tasks; trackBy: trackByFn" cdkDrag>
     <app-task (removeTask)="removeTask(task.id, column.id)">
       {{ task.desc }}
