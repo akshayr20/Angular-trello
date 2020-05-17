@@ -6,7 +6,8 @@
 
 @import "./components/icons.scss";
 @import './components/scrollbar.scss';
-@import './components/column.scss';
 
+@import './typography/typography';
 
 @import "./layout/board.scss";
+@import "./layout/flex";

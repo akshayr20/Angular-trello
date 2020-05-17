@@ -1,20 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
-import { AddNewFeatureComponent } from './components/add-new-feature/add-new-feature.component';
-import { WithDragCdkComponent } from './with-drag-cdk/with-drag-cdk.component';
-import { WithoutDragCdkComponent } from './without-drag-cdk/without-drag-cdk.component';
+import { WithDragCdkModule } from './components/with-drag-cdk/with-drag-cdk.module';
+import { WithoutDragCdkModule } from './components/without-drag-cdk/without-drag-cdk.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddNewFeatureComponent,
-    WithDragCdkComponent,
-    WithoutDragCdkComponent,
-  ],
-  imports: [BrowserModule, DragDropModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, WithDragCdkModule, WithoutDragCdkModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

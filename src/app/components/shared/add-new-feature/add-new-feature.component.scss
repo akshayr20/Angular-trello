@@ -1,8 +1,11 @@
+@import "../../../../assets/sass/layout/flex";
+
 :host {
   margin-bottom: 0.8rem;
   min-width: 24rem;
 }
-.add-card {
+
+.add-feature {
   @extend .flex-justify-content-between-align-items-center;
 
   text-transform: uppercase;
@@ -13,7 +16,7 @@
   box-shadow: 0 3px 5px rgba(9, 30, 66, 0.25);
 }
 
-.new-task-form {
+.new-feature-form {
   @extend .flex-justify-content-between-align-items-center;
   padding: 1rem 0;
 }
@@ -29,15 +32,9 @@
 }
 
 .action-buttons {
-  flex-basis: 20%;
   @extend .flex-justify-content-between-align-items-center;
+  flex-basis: 20%;
   > * {
     margin-left: 1rem;
   }
-}
-
-.flex-justify-content-between-align-items-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

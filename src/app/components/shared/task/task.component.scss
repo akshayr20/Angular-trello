@@ -1,0 +1,24 @@
+@import '../../../../assets/sass/layout/flex';
+
+.task {
+  @extend .flex-justify-content-between-align-items-center;
+  background-color: rgba(#fff, 0.7);
+  box-shadow: var(--shadow-default);
+
+  font-size: 1.4rem;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  word-wrap: break-word;
+  cursor: move;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.delete-icon {
+  cursor: pointer;
+  img {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}

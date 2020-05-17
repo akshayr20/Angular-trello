@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Column } from '../models/board.model';
-import { DataService } from '../service/data.service';
-import { DragDropService } from './helpers/drag-drop.service';
+import { DataService } from 'src/app/service/data.service';
+import { Column } from 'src/app/models';
+import { DragDropService } from '../service/drag-drop/drag-drop.service';
 
 @Component({
-  selector: 'app-without-drag-cdk',
-  templateUrl: './without-drag-cdk.component.html',
+  selector: 'app-column-without-cdk',
+  templateUrl: './column.component.html'
 })
-export class WithoutDragCdkComponent implements OnInit {
+export class ColumnWithoutCdkComponent implements OnInit {
   @Input() column: Column;
   isDragging: boolean;
 
@@ -20,8 +20,16 @@ export class WithoutDragCdkComponent implements OnInit {
     this.isDragging = this.dragDropService.isDragging;
   }
 
+  trackByFn(index: number, el: any): number {
+    return el.id;
+  }
+
   createTask(taskDesc: string, column: Column) {
-    this.dataService.createCard(taskDesc, column);
+    this.dataService.createTask(taskDesc, column);
+  }
+
+  removeTask(taskId: number, columnId: number) {
+    this.dataService.removeTask(taskId, columnId);
   }
 
   dragover(ev) {

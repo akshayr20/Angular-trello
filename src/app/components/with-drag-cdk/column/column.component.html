@@ -12,9 +12,11 @@
   [cdkDropListData]="column.tasks"
   (cdkDropListDropped)="drop($event)"
 >
-  <h3 class="column--title">{{ column.name }}</h3>
-  <div class="column--content" *ngFor="let task of column.tasks" cdkDrag>
-    {{ task.desc }}
+  <h2 class="heading heading__secondary sm-margin-bottom">{{ column.name }}</h2>
+  <div *ngFor="let task of column.tasks; trackBy: trackByFn" cdkDrag>
+    <app-task (removeTask)="removeTask(task.id, column.id)">
+      {{ task.desc }}
+    </app-task>
   </div>
   <app-add-new-feature (create)="createTask($event, column)">
     Add new Card

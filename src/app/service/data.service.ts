@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Column, Board, Task } from '../models/board.model';
+import { Column, Board, Task } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -37,11 +37,18 @@ export class DataService {
     localStorage.setItem('board', board);
   }
 
-  createCard(taskDesc: string, column: Column) {
-    if (taskDesc) {
+  createTask(taskDesc: string, column: Column) {
+    if (taskDesc && column) {
       column.tasks.push(new Task(Date.now(), taskDesc));
       this.saveBoard();
     }
+  }
+
+  removeTask(taskId: number, columnId: number) {
+    const column = this.getColumnById(columnId);
+    const taskIndex = this.getTaskIndexByColumnAndTaskId(column, taskId);
+    column.tasks.splice(taskIndex, 1);
+    this.saveBoard();
   }
 
   createColumn(columnName: string) {
@@ -54,4 +61,10 @@ export class DataService {
   getColumnById(columnID): Column {
     return this.board.columns.find(({ id }) => id === columnID);
   }
+
+  getTaskIndexByColumnAndTaskId(column: Column, taskId): number {
+    return column.tasks.findIndex(({ id }) => id === taskId);
+  }
+
+
 }

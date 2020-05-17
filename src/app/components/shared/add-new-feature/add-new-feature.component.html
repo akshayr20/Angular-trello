@@ -1,5 +1,5 @@
 <div
-  class="add-card"
+  class="add-feature"
   (click)="isFormOpen = true"
   *ngIf="!isFormOpen; else addNewCard"
 >
@@ -12,7 +12,7 @@
 </div>
 
 <ng-template #addNewCard>
-  <div class="new-task-form">
+  <div class="new-feature-form">
     <input
       autofocus
       (keydown.enter)="emitTask()"

@@ -14,16 +14,16 @@
 >
   <h3 class="column--title">{{ column.name }}</h3>
   <!-- TODO: CREATE directives for drag actions -->
-  <!-- TODO: Create a task component -->
   <div
-    class="column--content"
     draggable="true"
     [ngClass]="{ dragging: isDragging }"
-    *ngFor="let task of column.tasks; let i = index"
     (dragenter)="moveInsideColumn($event, task.id, column.id)"
     (dragstart)="dragStart($event, task.id, column.id)"
+    *ngFor="let task of column.tasks; trackBy: trackByFn"
   >
-    {{ task.desc }}
+    <app-task (removeTask)="removeTask(task.id, column.id)">
+      {{ task.desc }}
+    </app-task>
   </div>
   <app-add-new-feature (create)="createTask($event, column)">
     Add new Card

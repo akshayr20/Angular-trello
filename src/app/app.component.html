@@ -1,24 +1,13 @@
-<header class="header">
-  {{ board.name }}
-</header>
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+</style>
 
-<main class="board" cdkDropListGroup>
-  <div
-    class="board--columns"
-    *ngFor="let column of board.columns"
-    [id]="column.id"
-  >
-    <app-with-drag-cdk
-      [column]="column"
-      *ngIf="withCdk; else withoutCdk"
-    ></app-with-drag-cdk>
+<app-without-drag-cdk  *ngIf="hasCdk; else withoutCdk"></app-without-drag-cdk>
 
-    <ng-template #withoutCdk>
-      <!-- EXTRAS: VANILLA DRAG-DROP implementation -->
-      <app-without-drag-cdk [column]="column"></app-without-drag-cdk>
-    </ng-template>
-  </div>
-  <app-add-new-feature (create)="createColumn($event)">
-    Add New Column
-  </app-add-new-feature>
-</main>
+<ng-template #withoutCdk>
+  <app-with-drag-cdk></app-with-drag-cdk>
+</ng-template>

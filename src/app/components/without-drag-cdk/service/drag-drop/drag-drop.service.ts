@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Column } from '../../models/board.model';
-import { DataService } from '../../service/data.service';
+import { DataService } from '../../../../service/data.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DragDropService {
   isDragging = false;
   draggedColumnId = null;
@@ -23,10 +20,6 @@ export class DragDropService {
     this.draggedColumnId = null;
     this.draggedTaskId = null;
     this.dataService.saveBoard();
-  }
-
-  getTaskIndexByColumnAndId(column: Column, taskId): number {
-    return column.tasks.findIndex(({ id }) => id === taskId);
   }
 
   moveInsideColumn(draggedOverTaskID) {
@@ -51,7 +44,7 @@ export class DragDropService {
     const draggedColumn = this.dataService.getColumnById(this.draggedColumnId);
     const droppedContainer = this.dataService.getColumnById(droppedColumnID);
 
-    const draggedTaskIndex = this.getTaskIndexByColumnAndId(
+    const draggedTaskIndex = this.dataService.getTaskIndexByColumnAndTaskId(
       draggedColumn,
       this.draggedTaskId
     );

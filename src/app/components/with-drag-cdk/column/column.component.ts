@@ -1,16 +1,28 @@
 import { Component, Input } from '@angular/core';
-import { Column } from '../models/board.model';
-import { DataService } from '../service/data.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Column } from 'src/app/models';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
-  selector: 'app-with-drag-cdk',
-  templateUrl: './with-drag-cdk.component.html',
+  selector: 'app-column-with-cdk',
+  templateUrl: './column.component.html'
 })
-export class WithDragCdkComponent {
+export class ColumnWithCdkComponent {
   @Input() column: Column;
 
   constructor(private dataService: DataService) {}
+
+  trackByFn(index: number, el: any): number {
+    return el.id;
+  }
+
+  createTask(taskDesc: string, column: Column) {
+    this.dataService.createTask(taskDesc, column);
+  }
+
+  removeTask(taskId: number, columnId: number) {
+    this.dataService.removeTask(taskId, columnId);
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -28,11 +40,5 @@ export class WithDragCdkComponent {
       );
     }
     this.dataService.saveBoard();
-  }
-
-  createTask(taskDesc: string, column: Column) {
-    if (taskDesc && column) {
-      this.dataService.createCard(taskDesc, column);
-    }
   }
 }

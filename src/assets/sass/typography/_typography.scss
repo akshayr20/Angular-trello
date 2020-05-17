@@ -1,0 +1,19 @@
+.heading {
+  display: block;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+
+  &__primary {
+    padding: 8px 12px;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgba(#172b4d, 0.5);
+  }
+
+  &__secondary {
+    font-size: 1.6rem;
+    padding: 0 4px;
+    font-weight: 600;
+  }
+}
