@@ -12,8 +12,8 @@
   &--columns {
     display: flex;
     margin-right: 3rem;
-    min-width: 30rem;
-    max-width: 30rem;
+    min-width: 35rem;
+    max-width: 35rem;
     overflow: auto;
 
     &__column {
@@ -26,7 +26,7 @@
       background-color: rgba(#ebecf0, 0.4);
       border-radius: 4px;
       max-height: 80vh;
-      max-width: 30rem;
+      max-width: 35rem;
     }
 
     &__title {
